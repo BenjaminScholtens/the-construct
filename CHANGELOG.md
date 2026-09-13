@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.1 — 2026-09-13
+
+CrowdyJS `17.0.1-dev.1`: a bound Studio save with a stale revision is a
+conflict, not a commit.
+
 ## 0.6.0 — 2026-09-13
 
 CrowdyJS `17.0.0-dev.1` and crowdy-dsh `0.3.0-dev.1` (ck-api v2.0.0): a bound
