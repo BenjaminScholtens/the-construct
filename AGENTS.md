@@ -42,7 +42,7 @@ direction changed last. Repin with `npm install --save-exact
 @crowdedkingdoms/crowdyjs@<version>`.
 
 There is no deploy workflow in this repo, deliberately. Hosting is the
-developer's -- and since 0.7.0 one of the developer's options is
+developer's -- and since 0.8.0 one of the developer's options is
 `npm run publish` (`scripts/publish.mjs`), which publishes `dist/` to Crowdy
 Games through the public hosting surface (`client.hosting`, ck-api v2.1) on the
 IDENTITY client, never the app token. A game published there runs framed by the

@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.7.0 — 2026-09-13
+## 0.8.0 — 2026-09-14
 
-Publish to Crowdy Games. CrowdyJS `17.1.0-dev.1` (ck-api v2.1.0).
+Publish to Crowdy Games. CrowdyJS `17.2.0-dev.1` (ck-api v2.1.0).
 
 - `npm run publish [-- --slug my-game]` (`scripts/publish.mjs`): sign in, claim
   the hosting slug, build, upload `dist/`, and print the play URL. The game is
@@ -18,6 +18,14 @@ Publish to Crowdy Games. CrowdyJS `17.1.0-dev.1` (ck-api v2.1.0).
 - `tests/e2e/shell.spec.ts`: the bundle framed by a shell fixture is
   cross-origin isolated and its sign-in click produces a `crowdyjs:navigate`
   to `/authorize` with the shell page as `redirect_uri`.
+## 0.7.0 — 2026-09-13
+
+CrowdyJS `17.1.0-dev.1` and crowdy-dsh `0.3.1-dev.1`: on the binary relay
+(which this starter turns on) the SDK now packs the messages sent within
+`realtime.bundleWindowMs` (1 ms) into one `MESSAGE_BUNDLE` datagram, accepted
+by replication server v0.27.0+. Nothing to change here: a lone message is sent
+unwrapped, `...AndWait` and `disconnect()` flush on their own, and a hidden tab
+flushes each send immediately. `realtime: { bundleSends: false }` opts out.
 
 ## 0.6.1 — 2026-09-13
 
