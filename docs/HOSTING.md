@@ -23,7 +23,7 @@ is true inside the frame (the shell delegates it), so CLIENT mods work.
 What is different from self-hosting, and what is not:
 
 - **Sign-in is the same flow** (`portal.signIn` -> Studio `/authorize` ->
-  `portal.handleSignInCallback`). Inside the shell the SDK (CrowdyJS >= 17.1)
+  `portal.handleSignInCallback`). Inside the shell the SDK (CrowdyJS >= 17.2)
   asks the shell to navigate the tab and uses the shell page as the
   `redirect_uri`; the shell relays the returned code into your frame. Nothing in
   this repo changes for it. The PKCE verifier never leaves your origin and the

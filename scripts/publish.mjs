@@ -9,7 +9,7 @@
  * a first-party Crowded Kingdoms page that frames your bundle from its own origin,
  * `https://<slug>.<content host>`. Players sign in through Crowded Kingdoms exactly
  * as they do when you host the build yourself; the SDK's shell bridge handles the
- * difference (CrowdyJS 17.1 `EmbeddedHost`).
+ * difference (CrowdyJS 17.2 EmbeddedHost).
  *
  * WHAT IT DOES, in order:
  *   1. signs in with your account (an IDENTITY session -- the hosting mutations refuse
