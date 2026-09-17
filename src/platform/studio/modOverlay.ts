@@ -11,12 +11,7 @@ import {
   type ModOverlayShape,
 } from '@/platform/studio/instanceSchema';
 
-export {
-  MAX_OVERLAY_OBJECTS,
-  parseOverlayPayload,
-  type ModOverlayObject,
-  type ModOverlayShape,
-};
+export { MAX_OVERLAY_OBJECTS, parseOverlayPayload, type ModOverlayObject, type ModOverlayShape };
 
 export interface ModOverlaySnapshot {
   revision: number;

@@ -102,7 +102,9 @@ export class PointerClickBuffer {
 
   private onPointer(event: PointerEvent, phase: 'down' | 'up'): void {
     if (isTextEntry(event.target)) return;
-    const canvas = canvasOf(event.target) ?? (phase === 'up' && this.downAt.has(event.button) ? this.lastCanvas : null);
+    const canvas =
+      canvasOf(event.target) ??
+      (phase === 'up' && this.downAt.has(event.button) ? this.lastCanvas : null);
     if (phase === 'down') {
       if (!canvas) return;
       this.lastCanvas = canvas;

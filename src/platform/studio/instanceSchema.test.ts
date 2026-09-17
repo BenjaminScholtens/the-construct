@@ -104,7 +104,22 @@ describe('composeScene', () => {
     const [qx, qy, qz, qw] = yawPitchQuat(Math.PI / 2, 0);
     const composed = composeScene(
       [
-        { id: 'root', kind: 'box', x: 50, y: 1, z: 50, qx, qy, qz, qw, sx: 1, sy: 1, sz: 1, color: 1, visible: true },
+        {
+          id: 'root',
+          kind: 'box',
+          x: 50,
+          y: 1,
+          z: 50,
+          qx,
+          qy,
+          qz,
+          qw,
+          sx: 1,
+          sy: 1,
+          sz: 1,
+          color: 1,
+          visible: true,
+        },
         {
           id: 'child',
           parent: 'root',

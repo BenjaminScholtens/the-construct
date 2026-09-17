@@ -72,7 +72,10 @@ export class InstanceLayer {
     };
   }
 
-  private geometryFor(instance: ComposedInstance): { geometry: THREE.BufferGeometry; owned: boolean } {
+  private geometryFor(instance: ComposedInstance): {
+    geometry: THREE.BufferGeometry;
+    owned: boolean;
+  } {
     if (instance.kind === 'mesh' && instance.mesh) {
       return { geometry: bufferGeometryFrom(instance.mesh), owned: true };
     }
@@ -108,7 +111,8 @@ export class InstanceLayer {
 
 function bufferGeometryFrom(mesh: SceneMesh): THREE.BufferGeometry {
   const geometry = new THREE.BufferGeometry();
-  if (mesh.positions) geometry.setAttribute('position', new THREE.BufferAttribute(mesh.positions, 3));
+  if (mesh.positions)
+    geometry.setAttribute('position', new THREE.BufferAttribute(mesh.positions, 3));
   if (mesh.normals) geometry.setAttribute('normal', new THREE.BufferAttribute(mesh.normals, 3));
   if (mesh.indices) geometry.setIndex(new THREE.BufferAttribute(mesh.indices, 1));
   if (!mesh.normals) geometry.computeVertexNormals();

@@ -48,7 +48,12 @@ describe('ModOverlayStore', () => {
     const store = new ModOverlayStore();
     store.apply('a', { objects: [{ id: 'one', x: 1, z: 1 }] });
     store.apply('b', { objects: [{ id: 'two', x: 2, z: 2 }] });
-    expect(store.snapshot().objects.map((o) => o.id).sort()).toEqual(['one', 'two']);
+    expect(
+      store
+        .snapshot()
+        .objects.map((o) => o.id)
+        .sort(),
+    ).toEqual(['one', 'two']);
     store.remove('a');
     expect(store.snapshot().objects.map((o) => o.id)).toEqual(['two']);
   });

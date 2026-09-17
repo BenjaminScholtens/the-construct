@@ -268,8 +268,14 @@ function parseNode(
   const visible = rec.visible === false || rec.hidden === true ? false : true;
   return {
     id,
-    parent: typeof parentRaw === 'string' && parentRaw.trim() ? parentRaw.trim().slice(0, MAX_ID_CHARS) : undefined,
-    mesh: typeof meshRaw === 'string' && meshRaw.trim() ? meshRaw.trim().slice(0, MAX_ID_CHARS) : undefined,
+    parent:
+      typeof parentRaw === 'string' && parentRaw.trim()
+        ? parentRaw.trim().slice(0, MAX_ID_CHARS)
+        : undefined,
+    mesh:
+      typeof meshRaw === 'string' && meshRaw.trim()
+        ? meshRaw.trim().slice(0, MAX_ID_CHARS)
+        : undefined,
     kind,
     x: px,
     y: py,
@@ -321,7 +327,10 @@ export function parseOverlayPayload(
   return out;
 }
 
-export function parseSceneCatalog(payload: unknown, grid?: PlayerCodeGridBounds): SceneCatalog | null {
+export function parseSceneCatalog(
+  payload: unknown,
+  grid?: PlayerCodeGridBounds,
+): SceneCatalog | null {
   const rec = asRecord(payload);
   if (!rec) return null;
   const jsonBytes = (() => {
@@ -454,8 +463,10 @@ export function composeScene(
     if (!node || !node.visible) return null;
     if (hasParentCycle(nodeMap, id)) return null;
 
-    let parent: Pick<ComposedInstance, 'x' | 'y' | 'z' | 'qx' | 'qy' | 'qz' | 'qw' | 'sx' | 'sy' | 'sz'> | null =
-      null;
+    let parent: Pick<
+      ComposedInstance,
+      'x' | 'y' | 'z' | 'qx' | 'qy' | 'qz' | 'qw' | 'sx' | 'sy' | 'sz'
+    > | null = null;
     if (node.bindActor) {
       const actor = actorMap.get(node.bindActor);
       if (actor) {
@@ -490,7 +501,16 @@ export function composeScene(
       y = parent.y + ry;
       z = parent.z + rz;
       [qx, qy, qz, qw] = normalizeQuat(
-        ...quatMultiply(parent.qx, parent.qy, parent.qz, parent.qw, node.qx, node.qy, node.qz, node.qw),
+        ...quatMultiply(
+          parent.qx,
+          parent.qy,
+          parent.qz,
+          parent.qw,
+          node.qx,
+          node.qy,
+          node.qz,
+          node.qw,
+        ),
       );
       sx = clamp(parent.sx * node.sx, MIN_SIZE, MAX_SIZE);
       sy = clamp(parent.sy * node.sy, MIN_SIZE, MAX_SIZE);
@@ -531,7 +551,10 @@ export function composeScene(
   return out;
 }
 
-export function applyPoses(nodes: readonly SceneNode[], poses: ReadonlyMap<string, SceneNode>): SceneNode[] {
+export function applyPoses(
+  nodes: readonly SceneNode[],
+  poses: ReadonlyMap<string, SceneNode>,
+): SceneNode[] {
   return nodes.map((node) => {
     const pose = poses.get(node.id);
     if (!pose) return node;
@@ -669,7 +692,12 @@ export function decodeCatalogChunk(
   const parts = view.getUint8(5);
   const n = view.getUint16(6, true);
   if (parts === 0 || part >= parts || bytes.length < CATALOG_CHUNK_HEADER + n) return null;
-  return { revision, part, parts, data: bytes.subarray(CATALOG_CHUNK_HEADER, CATALOG_CHUNK_HEADER + n) };
+  return {
+    revision,
+    part,
+    parts,
+    data: bytes.subarray(CATALOG_CHUNK_HEADER, CATALOG_CHUNK_HEADER + n),
+  };
 }
 
 export class CatalogAssembler {

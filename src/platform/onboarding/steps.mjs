@@ -518,9 +518,7 @@ export async function runOnboarding(options) {
     );
   }
   const game = await step('enter', 'App token', () => enterApp(appId));
-  await step('claims', 'Grid claim policy', () =>
-    ensureSelfClaimPolicy(identity, { appId }, log),
-  );
+  await step('claims', 'Grid claim policy', () => ensureSelfClaimPolicy(identity, { appId }, log));
   await step('model', 'Game model', () => deployModel(game, { appId }, log));
   await step('studio', 'Crowdy Studio starter files', () =>
     publishStarterFiles(game, { appId }, log),

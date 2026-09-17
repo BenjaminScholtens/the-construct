@@ -44,7 +44,8 @@ const EYE_HEIGHT = 1.6;
 const WALK_SPEED = 6;
 const RUN_SPEED = 11;
 
-const IDLE_HINT = 'WASD move · hold RMB to look · LMB for grid mods · scroll zoom · E on a pad · F1 help';
+const IDLE_HINT =
+  'WASD move · hold RMB to look · LMB for grid mods · scroll zoom · E on a pad · F1 help';
 
 export class HolodeckScene implements GameScene {
   readonly id = 'holodeck';

@@ -130,7 +130,10 @@ describe('routeClientHostCall', () => {
     const r = reads();
     await expect(
       routeClientHostCall(
-        { fn: 'voxel_set', args: { chunkX: 0, chunkY: 0, chunkZ: 0, x: 1, y: 0, z: 2, voxelType: 3 } } as never,
+        {
+          fn: 'voxel_set',
+          args: { chunkX: 0, chunkY: 0, chunkZ: 0, x: 1, y: 0, z: 2, voxelType: 3 },
+        } as never,
         r.reads,
         grid,
       ),
