@@ -221,7 +221,7 @@ export async function ensureSelfClaimPolicy(client, { appId }, log = noop) {
   }
   try {
     await client.marketplace.setGridClaimPolicy({ appId, policy: 'SELF_CLAIM' });
-  } catch (error) {
+  } catch {
     // Local/single-node ck-api exposes this as manage_apps on the identity
     // session (`setAppGridClaimPolicy`); an app-scoped token is refused.
     await client.graphql.query(
